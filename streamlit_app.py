@@ -29,10 +29,10 @@ if st.button("Add Subtitles"):
         srt_file_path = os.path.abspath(srt_file.name)
         video_file_path = os.path.abspath(video_file.name)
 
-        subs = SubtitlesClip(srt_file_path.name, generator)
+        subs = SubtitlesClip(srt_file_path, generator)
         subtitles = subs.set_pos(('center','center'))
 
-        video = VideoFileClip(video_file_path.name)
+        video = VideoFileClip(video_file_path)
 
         # Get the size of the input video
         size = video.size
