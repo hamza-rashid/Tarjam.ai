@@ -36,7 +36,8 @@ if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
     st.write(srt_file)
-    bytes_data = srt_file.getvalue() # Modified
+    srt_file = srt_file.decode('UTF-8')
+    bytes_data = srt_file.getvalue().decode # Modified
 
 
 
