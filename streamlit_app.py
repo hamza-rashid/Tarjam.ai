@@ -26,8 +26,10 @@ def generator(txt):
 
 if st.button("Add Subtitles"):
     if video_file and srt_file is not None:
-        srt_file_path = os.path.abspath(srt_file.name)
-        video_file_path = os.path.abspath(video_file.name)
+        app_root_dir = os.getcwd()
+        
+        srt_file_path = os.path.join(app_root_dir, srt_file.name)
+        video_file_path = os.path.join(app_root_dir, video_file.name)
 
         subs = SubtitlesClip(srt_file_path, generator)
         subtitles = subs.set_pos(('center','center'))
