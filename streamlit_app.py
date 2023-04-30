@@ -14,7 +14,7 @@ with st.form(key="my_form"):
 
         # upload audio and srt file with streamlit
         video_file = st.file_uploader("Upload Video", type=["mp4", "m4a"])
-        srt_file = st.file_uploader("Upload Subtitles", type=["txt"])
+        srt_file = st.file_uploader("Upload Subtitles", type=["srt"])
 
 
         submit_button = st.form_submit_button(label="Subtitle")        
@@ -35,15 +35,7 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
-    
-    f = open(srt_file.name, 'r')
-    file_contents = f.read()
-    st.success(file_contents)
-    f.close()
 
-
-
-        
     subs = SubtitlesClip(srt_file.name, generator)
     subtitles = subs.set_pos(('center','center'))
 
