@@ -5,6 +5,7 @@ import arabic_reshaper # pip install arabic-reshaper
 from bidi.algorithm import get_display # pip install python-bidi
 import tempfile
 import io
+import pysrt
 
 
 st.title('Subtitle App')
@@ -34,10 +35,10 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
-    path_in = video_file.name
+    srt_file_new = pysrt.open(srt_file.name)
 
         
-    subs = SubtitlesClip(srt_file.name, generator)
+    subs = SubtitlesClip(srt_file_new, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
