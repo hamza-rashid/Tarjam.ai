@@ -45,7 +45,7 @@ if video_file and srt_file is not None:
         savedsrt = io.StringIO(srt_file.getvalue().decode('UTF-8'))
 
 
-    subs = SubtitlesClip(savedsrt, generator)
+    subs = SubtitlesClip(savedsrt.name, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
