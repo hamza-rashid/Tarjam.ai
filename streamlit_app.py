@@ -36,7 +36,7 @@ if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
     
-    f = open(srt_file, 'r')
+    f = open(srt_file.name, 'r')
     file_contents = f.read()
     st.success(file_contents)
     f.close()
