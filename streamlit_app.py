@@ -35,8 +35,8 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
-    st.write(file)
-    bytes_data = file.decode.getvalue() # Modified
+    st.write(srt_file)
+    bytes_data = srt_file.decode.getvalue() # Modified
 
 
 
