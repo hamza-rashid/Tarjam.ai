@@ -27,8 +27,8 @@ def generator(txt):
 
 if st.button("Add Subtitles"):
     if video_file and srt_file is not None:
-        srt_decoded = io.BytesIO(srt_file.read())
-        video_decoded = io.BytesIO(video_file.read())
+        srt_decoded = io.BytesIO(srt_file.name)
+        video_decoded = io.BytesIO(video_file.name)
         
         subs = SubtitlesClip(srt_decoded, generator)
         subtitles = subs.set_pos(('center','center'))
