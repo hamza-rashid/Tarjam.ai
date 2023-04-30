@@ -33,10 +33,10 @@ def generator(txt):
 
 if video_file and srt_file is not None:
         
-    subs = SubtitlesClip(srt_file.name, generator)
+    subs = SubtitlesClip(srt_file.data, generator)
     subtitles = subs.set_pos(('center','center'))
 
-    video = VideoFileClip(video_file.name)
+    video = VideoFileClip(video_file.data)
 
     result = CompositeVideoClip([video, subtitles])
 
