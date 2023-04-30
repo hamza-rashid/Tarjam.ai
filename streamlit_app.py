@@ -15,10 +15,12 @@ with st.form(key="my_form"):
         # upload audio and srt file with streamlit
         video_file = st.file_uploader("Upload Video", type=["mp4", "m4a"])
         srt_file = st.file_uploader("Upload Subtitles", type=["srt"])
-        srt_file_new = pysrt.open(srt_file.name)
 
 
         submit_button = st.form_submit_button(label="Subtitle")
+
+        
+srt_file_new = pysrt.open(srt_file.name)
 
 
 def generator(txt):
