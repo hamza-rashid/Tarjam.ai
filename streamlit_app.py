@@ -35,17 +35,9 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
- # Modified
-    # Create a temporary file to save the result
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file_srt:
-        # Get the file path string
-        temp_file_srt_path = temp_file_srt.name
-        savedsrt = open(temp_file_srt_path, 'w')
-        
-        savedsrt = io.StringIO(srt_file.getvalue().decode('UTF-8'))
 
 
-    subs = SubtitlesClip(savedsrt.name, generator)
+    subs = SubtitlesClip(srt_file.getvalue().decode('UTF-8'), generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
