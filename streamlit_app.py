@@ -4,6 +4,7 @@ from moviepy.video.tools.subtitles import SubtitlesClip
 import arabic_reshaper # pip install arabic-reshaper
 from bidi.algorithm import get_display # pip install python-bidi
 import tempfile
+import os
 
 st.title('Subtitle App')
 
@@ -25,10 +26,13 @@ def generator(txt):
 
 if st.button("Add Subtitles"):
     if video_file and srt_file is not None:
-        subs = SubtitlesClip(srt_file.name, generator)
+        srt_file_path = os.path.abspath(srt_file.name)
+        video_file_path = os.path.abspath(video_file.name)
+
+        subs = SubtitlesClip(srt_file_path.name, generator)
         subtitles = subs.set_pos(('center','center'))
 
-        video = VideoFileClip(video_file.name)
+        video = VideoFileClip(video_file_path.name)
 
         # Get the size of the input video
         size = video.size
