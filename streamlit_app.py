@@ -33,6 +33,10 @@ def generator(txt):
 
 if video_file and srt_file is not None:
         
+    st.audio(srt_file, format="srt")
+    path_in = srt_file.name
+
+        
     subs = SubtitlesClip(srt_file.data, generator)
     subtitles = subs.set_pos(('center','center'))
 
