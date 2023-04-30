@@ -21,7 +21,7 @@ with st.form(key="my_form"):
 
 
 def generator(txt):
-    reshaped_text = arabic_reshaper.reshape(txt.read().decode('UTF-8'))
+    reshaped_text = arabic_reshaper.reshape(txt)
     bidi_text = get_display(reshaped_text)
     txt_clip = TextClip(bidi_text, font="arial", fontsize=40, color='white', stroke_color="white", stroke_width=2)
     txt_clip = txt_clip.on_color(
@@ -36,8 +36,10 @@ if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
 
+    with open(srt_file.name "w") as srt_file_updated:
+        srt_file_updated.write(srt_file.getvalue().decode('UTF-8'))
 
-    subs = SubtitlesClip(srt_file, generator)
+    subs = SubtitlesClip(srt_file.name, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
