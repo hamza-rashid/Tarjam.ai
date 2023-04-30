@@ -31,7 +31,6 @@ def generator(txt):
     return txt_clip
 
 
-
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
