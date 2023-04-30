@@ -45,7 +45,7 @@ if video_file and srt_file is not None:
         savedsrt.close()
 
 
-    subs = SubtitlesClip(tempsrtfile, generator)
+    subs = SubtitlesClip(savedsrt, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
