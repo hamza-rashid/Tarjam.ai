@@ -37,10 +37,10 @@ if video_file and srt_file is not None:
     path_in = srt_file.name
 
         
-    subs = SubtitlesClip(srt_file.data, generator)
+    subs = SubtitlesClip(srt_file.name, generator)
     subtitles = subs.set_pos(('center','center'))
 
-    video = VideoFileClip(video_file.data)
+    video = VideoFileClip(video_file.name)
 
     result = CompositeVideoClip([video, subtitles])
 
