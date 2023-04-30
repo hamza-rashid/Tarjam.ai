@@ -34,7 +34,7 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
-    srt_file_new = pysrt.open(srt_file.name)
+    srt_file_new = pysrt.open("/app/tarjam.ai/"+srt_file.name)
 
         
     subs = SubtitlesClip(srt_file_new, generator)
