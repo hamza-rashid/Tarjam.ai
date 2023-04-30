@@ -33,8 +33,8 @@ def generator(txt):
 
 if video_file and srt_file is not None:
         
-    st.audio(srt_file, format="srt")
-    path_in = srt_file.name
+    st.video(video_file, format="mp4")
+    path_in = video_file.name
 
         
     subs = SubtitlesClip(srt_file.name, generator)
