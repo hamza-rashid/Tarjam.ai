@@ -32,20 +32,11 @@ def generator(txt):
 
 
 if video_file and srt_file is not None:
-    srt_decoded = srt_file.name
-    video_decoded = video_file.name
+        
+    subs = SubtitlesClip(srt_file.name, generator)
+    subtitles = subs.set_pos(('center','center'))
 
-        
-    # Create a temporary file to save the srt result
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file_srt:
-        # Get the file path string
-        temp_file_srt_path = srt_file.name
-        
-        
-        subs = SubtitlesClip(temp_file_srt_path, generator)
-        subtitles = subs.set_pos(('center','center'))
-
-    video = VideoFileClip(video_decoded)
+    video = VideoFileClip(video_file.name)
 
     result = CompositeVideoClip([video, subtitles])
 
@@ -61,5 +52,5 @@ if video_file and srt_file is not None:
         st.video(temp_file_subtitled_path)
     
 else:
-    st.error("Please upload correctly")
+    st.stop()
     
