@@ -41,7 +41,9 @@ if video_file and srt_file is not None:
         # Get the file path string
         temp_file_srt_path = temp_file_srt.name
         savedsrt = open(temp_file_srt_path, 'w')
-        savedsrt.write(srt_file.getvalue().decode('UTF-8'))
+        
+        savedsrt = io.StringIO(srt_file.getvalue().decode('UTF-8'))
+
 
     subs = SubtitlesClip(savedsrt, generator)
     subtitles = subs.set_pos(('center','center'))
