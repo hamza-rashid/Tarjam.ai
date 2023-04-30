@@ -40,9 +40,7 @@ if video_file and srt_file is not None:
 
     video = VideoFileClip(video_decoded)
 
-    # Get the size of the input video
-    size = video.size
-    result = CompositeVideoClip([video, subtitles], size=size)
+    result = CompositeVideoClip([video, subtitles])
 
     # Create a temporary file to save the result
     with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file_subtitled:
