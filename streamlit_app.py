@@ -19,7 +19,7 @@ with st.form(key="my_form"):
 
         submit_button = st.form_submit_button(label="Subtitle")
 
-srt_file_new = pysrt.open(srt_file)
+srt_file_new = pysrt.open("/app/tarjam.ai/"+srt_file.name)
         
 
 
