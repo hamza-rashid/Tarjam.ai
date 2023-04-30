@@ -39,7 +39,7 @@ if video_file and srt_file is not None:
 
 
 
-    subs = SubtitlesClip(srt_file.name.decode('UTF-8'), generator)
+    subs = SubtitlesClip(srt_file.name.getvalue(), generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
