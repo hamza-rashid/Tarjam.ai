@@ -40,9 +40,9 @@ if video_file and srt_file is not None:
     with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file_srt:
         # Get the file path string
         temp_file_srt_path = temp_file_srt.name
-        tempsrtfile = open(temp_file_srt_path, 'w')
-        tempsrtfile.write(srt_file.getvalue().decode('UTF-8'))
-        temprsrtfile.close()
+        savedsrt = open(temp_file_srt_path, 'w')
+        savedsrt.write(srt_file.getvalue().decode('UTF-8'))
+        savedsrt.close()
 
 
     subs = SubtitlesClip(tempsrtfile, generator)
