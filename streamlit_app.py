@@ -32,8 +32,8 @@ def generator(txt):
 
 
 if video_file and srt_file is not None:
-    srt_decoded = srt_file
-    video_decoded = video_file
+    srt_decoded = srt_file.name
+    video_decoded = video_file.name
         
     subs = SubtitlesClip(srt_decoded, generator)
     subtitles = subs.set_pos(('center','center'))
