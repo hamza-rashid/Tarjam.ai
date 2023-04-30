@@ -35,8 +35,12 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
+    st.write(file)
+    bytes_data = file.decode.getvalue() # Modified
 
-    subs = SubtitlesClip(srt_file.name, generator)
+
+
+    subs = SubtitlesClip(bytes_data, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
