@@ -14,13 +14,10 @@ with st.form(key="my_form"):
 
         # upload audio and srt file with streamlit
         video_file = st.file_uploader("Upload Video", type=["mp4", "m4a"])
-        srt_file = st.file_uploader("Upload Subtitles", type=["srt"])
+        srt_file = st.file_uploader("Upload Subtitles", type=["txt"])
 
 
-        submit_button = st.form_submit_button(label="Subtitle")
-
-srt_file_new = pysrt.open("/app/tarjam.ai/"+srt_file.name)
-        
+        submit_button = st.form_submit_button(label="Subtitle")        
 
 
 def generator(txt):
@@ -38,9 +35,16 @@ def generator(txt):
 if video_file and srt_file is not None:
         
     st.video(video_file, format="mp4")
+    
+    f = open(srt_file, 'r')
+    file_contents = f.read()
+    st.success(file_contents)
+    f.close()
+
+
 
         
-    subs = SubtitlesClip(srt_file_new, generator)
+    subs = SubtitlesClip(srt_file.name, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
