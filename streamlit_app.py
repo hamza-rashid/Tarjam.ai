@@ -9,9 +9,14 @@ import io
 
 st.title('Subtitle App')
 
-# upload audio and srt file with streamlit
-video_file = st.file_uploader("Upload Video", type=["mp4", "m4a"])
-srt_file = st.file_uploader("Upload Subtitles", type=["srt"])
+with st.form(key="my_form"):
+
+        # upload audio and srt file with streamlit
+        video_file = st.file_uploader("Upload Video", type=["mp4", "m4a"])
+        srt_file = st.file_uploader("Upload Subtitles", type=["srt"])
+
+        submit_button = st.form_submit_button(label="Subtitle")
+
 
 def generator(txt):
     reshaped_text = arabic_reshaper.reshape(txt)
