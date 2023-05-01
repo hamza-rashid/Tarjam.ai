@@ -31,6 +31,29 @@ def generator(txt):
     )
     return txt_clip
 
+def file_to_subtitles(filename):
+    """ Converts a srt file into subtitles.
+
+    The returned list is of the form ``[((ta,tb),'some text'),...]``
+    and can be fed to SubtitlesClip.
+
+    Only works for '.srt' format for the moment.
+    """
+    times_texts = []
+    current_times = None
+    current_text = ""
+    with open(filename,'r') as f:
+        for line in f:
+            times = re.findall("([0-9]*:[0-9]*:[0-9]*,[0-9]*)", line)
+            if times:
+                current_times = [cvsecs(t) for t in times]
+            elif line.strip() == '':
+                times_texts.append((current_times, current_text.strip('\n')))
+                current_times, current_text = None, ""
+            elif current_times:
+                current_text += line
+    return times_texts
+
 
 if video_file and srt_file is not None:
         
@@ -39,12 +62,16 @@ if video_file and srt_file is not None:
     with open(srt_file.name, "r") as file:
         srt_content = file.read()
         
-
+        st.success(file_to_subtitles(file))
+        
+        
+        
+        
+        
 
     #with open(srt_file.name, "w") as srt_file_updated:
     #    srt_file_updated.write(srt_file.getvalue().decode('UTF-8'))  
-        print(file.read())
-        subs = SubtitlesClip(file, generator)
+    subs = SubtitlesClip(file, generator)
         
     subtitles = subs.set_pos(('center','center'))
 
