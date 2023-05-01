@@ -42,10 +42,8 @@ if video_file and srt_file is not None:
 
 
     #with open(srt_file.name, "w") as srt_file_updated:
-    #    srt_file_updated.write(srt_file.getvalue().decode('UTF-8'))
-    st.success(srt_content)
-    st.success(type(srt_content))
-    subs = SubtitlesClip(srt_content, generator)
+    #    srt_file_updated.write(srt_file.getvalue().decode('UTF-8'))  
+        subs = SubtitlesClip(file, generator)
     subtitles = subs.set_pos(('center','center'))
 
     video = VideoFileClip(video_file.name)
