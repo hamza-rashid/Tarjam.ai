@@ -6,7 +6,7 @@ from bidi.algorithm import get_display # pip install python-bidi
 import tempfile
 import io
 import pysrt
-
+import re
 
 st.title('Subtitle App')
 
