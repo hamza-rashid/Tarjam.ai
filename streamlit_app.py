@@ -74,13 +74,13 @@ if video_file and srt_file is not None:
     #with open(srt_file.name, "w") as srt_file_updated:
     #    srt_file_updated.write(srt_file.getvalue().decode('UTF-8'))  
         subs = SubtitlesClip(file.name, generator)
-    st.text(subs)
+        st.text(subs)
         
-    subtitles = subs.set_pos(('center','center'))
+        subtitles = subs.set_pos(('center','center'))
 
-    video = VideoFileClip(video_file.name)
+        video = VideoFileClip(video_file.name)
 
-    result = CompositeVideoClip([video, subtitles])
+        result = CompositeVideoClip([video, subtitles])
 
     # Create a temporary file to save the result
     with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file_subtitled:
