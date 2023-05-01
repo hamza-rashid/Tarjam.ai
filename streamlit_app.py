@@ -62,7 +62,7 @@ if video_file and srt_file is not None:
     with open(srt_file.name, "r") as file:
         srt_content = file.read()
         
-        st.success(file_to_subtitles(file.name))
+        st.text(file_to_subtitles(file.name))
         
         
         
