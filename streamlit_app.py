@@ -1,5 +1,6 @@
 import streamlit as st
 from moviepy.editor import * #pip install moviepy
+from moviepy.tools import cvsecs
 from moviepy.video.tools.subtitles import SubtitlesClip
 import arabic_reshaper # pip install arabic-reshaper
 from bidi.algorithm import get_display # pip install python-bidi
@@ -7,6 +8,9 @@ import tempfile
 import io
 import pysrt
 import re
+import numpy as np
+
+from moviepy.tools import cvsecs
 
 st.title('Subtitle App')
 
